@@ -45,9 +45,8 @@ header.hero h1 span{display:block;color:var(--red2)}
 .services p{font-size:15px;color:var(--smoke);margin:0}
 @media(max-width:760px){.services{grid-template-columns:1fr}}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:34px}
-.gallery figure{margin:0;aspect-ratio:4/5;background:linear-gradient(160deg,#1c1c1f,#0e0e10);border:1px solid var(--line);display:flex;align-items:flex-end;padding:16px;position:relative;max-width:100%}
-.gallery figure:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,255,255,.025) 18px 19px)}
-.gallery figcaption{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);position:relative}
+.gallery figure img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+.gallery figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:#151517;border:1px solid var(--line);position:relative;max-width:100%}
 @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
 .models{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
 .models article{border:1px solid var(--line);background:var(--carbon);padding:22px}
@@ -76,18 +75,23 @@ textarea{min-height:120px;resize:vertical}
 .faq details{border-top:1px solid var(--line);padding:14px 0}
 .faq summary{cursor:pointer;font-weight:600;font-size:17px}
 .faq p{margin:10px 0 0;color:var(--smoke)}
+.rating{font-size:18px;margin:0 0 6px}.rating strong{font-family:Anton,Impact,sans-serif;font-size:40px;vertical-align:middle;margin-right:8px}.stars{color:#f6c945;letter-spacing:.08em}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.reviews blockquote{margin:0;background:var(--carbon);border:1px solid var(--line);padding:22px}
+.reviews blockquote p{font-size:15px;margin:10px 0 12px;color:var(--bone)}
+.reviews cite{font-style:normal;font-size:13px;color:var(--smoke)}
+@media(max-width:760px){.reviews{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--line);padding-block:30px;font-size:13px;color:var(--smoke)}
 footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 footer a{color:var(--smoke)}
 .wa{position:fixed;right:18px;bottom:18px;z-index:9;background:#25d366;color:#fff;font-weight:600;text-decoration:none;padding:12px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
-.demo{position:fixed;left:14px;bottom:14px;z-index:9;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke);background:rgba(11,11,12,.9);border:1px solid var(--line);padding:6px 10px}
 @media(prefers-reduced-motion:no-preference){header.hero h1{animation:up .6s ease both}.lead,.ctas{animation:up .6s .12s ease both}@keyframes up{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"],"hasMap":"https://maps.google.com/?cid=964268582447954132","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"27"}}</script>
 </head><body>
 <nav><div class="wrap">
 <a class="brand" href="#top"><img class="logo" src="logo.png" alt="Bryan la Tinta"></a>
-<ul><li><a href="#hacemos">Qué hacemos</a></li><li><a href="#motos">Nuestras motos</a></li><li><a href="#modelos">Modelos</a></li><li><a href="#idea">Tu idea</a></li><li><a href="#prototipo">Prototipo</a></li><li><a href="#contacto">Contacto</a></li></ul>
+<ul><li><a href="#hacemos">Qué hacemos</a></li><li><a href="#motos">Nuestras motos</a></li><li><a href="#modelos">Modelos</a></li><li><a href="#idea">Tu idea</a></li><li><a href="#prototipo">Prototipo</a></li><li><a href="#resenas">Reseñas</a></li><li><a href="#contacto">Contacto</a></li></ul>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
@@ -126,13 +130,17 @@ footer a{color:var(--smoke)}
 <h2>Trabajos que han salido del taller</h2>
 <p class="muted">Una selección de motos, bicis y cascos pintados aquí. En Instagram publicamos cada proyecto nuevo.</p>
 <div class="gallery">
-<figure><figcaption>Foto del proyecto</figcaption></figure>
-<figure><figcaption>Foto del proyecto</figcaption></figure>
-<figure><figcaption>Foto del proyecto</figcaption></figure>
-<figure><figcaption>Foto del proyecto</figcaption></figure>
-<figure><figcaption>Foto del proyecto</figcaption></figure>
-<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><img src="bryan-01.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-02.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-03.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-04.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-05.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-06.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-07.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-08.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
+<figure><img src="bryan-09.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
 </div>
+<p class="muted" style="margin-top:18px">Más proyectos, cada semana, en <a href="https://www.instagram.com/bryan_la_tinta/" target="_blank" rel="noopener">@bryan_la_tinta</a>.</p>
 </div></section>
 
 <section id="modelos"><div class="wrap">
@@ -197,12 +205,27 @@ footer a{color:var(--smoke)}
 </form>
 </div></section>
 
+<section id="resenas"><div class="wrap">
+<p class="eyebrow">Reseñas</p>
+<h2>Lo que dice la gente que ha pasado por el taller</h2>
+<p class="rating"><strong>4,9</strong> <span class="stars">★★★★★</span> <span class="muted">sobre 5 · 27 reseñas en Google</span></p>
+<div class="reviews">
+<blockquote><span class="stars">★★★★★</span><p>Me hizo un gran trabajo en el depósito, es un gran artista de los que ya no quedan.</p><cite>Jose Luis F. · Google</cite></blockquote>
+<blockquote><span class="stars">★★★★★</span><p>Donde traes una mera motocicleta y sales con una obra de arte. Bryan La Tinta, lo mejor que hay.</p><cite>Franklin · Google</cite></blockquote>
+<blockquote><span class="stars">★★★★★</span><p>El mejor pintor de motos que hay. Además de buen tío y trato excelente. Un diez.</p><cite>Xavier R. · Google</cite></blockquote>
+<blockquote><span class="stars">★★★★★</span><p>Un lujo. Si quieres pintar tu bici, Bryan es el pintor ideal: cuida los detalles al máximo, es un profesional.</p><cite>Alfonso Y. · Google</cite></blockquote>
+<blockquote><span class="stars">★★★★★</span><p>Buen servicio, te aconsejan lo mejor para que no gastes innecesariamente.</p><cite>Edu · Google</cite></blockquote>
+<blockquote><span class="stars">★★★★★</span><p>Un gran profesional y mejor persona. Es un crack.</p><cite>Jordi C. · Google</cite></blockquote>
+</div>
+<div class="ctas" style="margin-top:26px"><a class="btn ghost" href="https://maps.google.com/?cid=964268582447954132" target="_blank" rel="noopener">Ver todas las reseñas en Google</a><a class="btn ghost" href="https://maps.google.com/?cid=964268582447954132" target="_blank" rel="noopener">Escribir una reseña</a></div>
+</div></section>
+
 <section id="contacto"><div class="wrap">
 <p class="eyebrow">Contacta con nosotros</p>
 <h2>Pásate por el taller o escríbenos</h2>
 <div class="contact">
 <div><strong>WhatsApp · Teléfono</strong><p><a href="tel:+34651027177" style="text-decoration:none;font-size:20px;font-weight:600">651 02 71 77</a><br>Lo más rápido para fotos y dudas.</p><a class="btn" id="wa-btn" href="#">Abrir WhatsApp</a></div>
-<div><strong>Taller</strong><p>C/ Pare Fita 72, local<br>08203 Sabadell (Barcelona)<br>Lunes a viernes 8:00–20:30<br>Sábados 8:00–16:30</p></div>
+<div><strong>Taller</strong><p><a href="https://maps.google.com/?cid=964268582447954132" target="_blank" rel="noopener">C/ Pare Fita 72, local<br>08203 Sabadell (Barcelona)</a><br>Lunes a viernes 8:00–20:30<br>Sábados 8:00–16:30</p></div>
 <div><strong>Redes</strong><p>Cada proyecto nuevo, en Instagram.</p><a class="btn ghost" href="https://www.instagram.com/bryan_la_tinta/" target="_blank" rel="noopener">@bryan_la_tinta</a></div>
 </div>
 </div></section>
@@ -212,17 +235,13 @@ footer a{color:var(--smoke)}
 <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="https://rotulito.com" target="_blank" rel="noopener">Web hecha por Rotulito</a></span>
 </div></footer>
 <a class="wa" id="wa-float" href="#">WhatsApp</a>
-<div class="demo" id="demo-tag">Demo · fotos y datos pendientes</div>
 
 <script>
 (function(){
-  fetch('logo.txt').then(function(r){return r.text()}).then(function(t){document.querySelectorAll('img.logo,img.logo-hero').forEach(function(i){i.src='data:image/png;base64,'+t.trim()})});
   var WA='34651027177';
   var ENDPOINT='https://script.google.com/macros/s/AKfycbzyfV5e_4AnI3NI7Y8WIdNO7lRCNs6pmC3iJZ9wUmya-5oW5Z5UN7uDXJyGecFYRBEY-w/exec';
-  var DEMO=false;
-  var link=WA?'https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.'):'';
-  ['wa-btn','wa-float'].forEach(function(id){var a=document.getElementById(id);if(link)a.href=link;else a.style.display='none';});
-  if(!DEMO)document.getElementById('demo-tag').style.display='none';
+  var link='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.');
+  ['wa-btn','wa-float'].forEach(function(id){document.getElementById(id).href=link;});
 
   var fotos=[];
   var inp=document.getElementById('p-fotos'),prev=document.getElementById('prev');
@@ -245,8 +264,7 @@ footer a{color:var(--smoke)}
     var fd=new FormData(form);var body=new URLSearchParams(fd);body.set('origen',form.id);
     Object.keys(extra||{}).forEach(function(k){body.set(k,extra[k]);});
     var done=function(){b.disabled=false;b.textContent=t0;document.getElementById(okId).style.display='block';form.reset();prev.innerHTML='';fotos=[];};
-    if(!ENDPOINT||DEMO){setTimeout(done,600);return;}
-    fetch(ENDPOINT,{method:'POST',body:body}).then(done).catch(function(){b.disabled=false;b.textContent=t0;alert('No se ha podido enviar. Escríbenos por WhatsApp.');});
+    fetch(ENDPOINT,{method:'POST',body:body}).then(done).catch(function(){b.disabled=false;b.textContent=t0;var m=document.getElementById('ferr');if(!m){m=document.createElement('p');m.id='ferr';m.style.color='#ff3b43';form.appendChild(m)}m.textContent='No se ha podido enviar. Escríbenos por WhatsApp.';});
   }
   document.getElementById('f-idea').addEventListener('submit',function(e){e.preventDefault();enviar(this,{},'ok-idea');});
   document.getElementById('f-proto').addEventListener('submit',function(e){e.preventDefault();var x={};fotos.forEach(function(f,i){x['foto'+(i+1)]=f.data;x['nombrefoto'+(i+1)]=f.name;});enviar(this,x,'ok-proto');});
