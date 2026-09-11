@@ -1,0 +1,255 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bryan la Tinta · Pintura kustom de motos, bicis y cascos en Sabadell</title><link rel="canonical" href="https://www.bryanlatinta.com/">
+<meta name="description" content="Pintura kustom de motos y bicis, aerografía, cascos, prototipos y reparación de carbono en Sabadell. Trabajos personalizados a medida.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--ink:#0b0b0c;--carbon:#151517;--steel:#232326;--line:#2c2c30;--bone:#ebe6dc;--smoke:#9a968e;--red:#d6262e;--red2:#ff3b43}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--bone)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase;line-height:1;margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,6vw,58px)}
+h3{font-size:22px;letter-spacing:.03em}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red2);font-weight:600;margin:0 0 14px}
+p{margin:0 0 14px;max-width:62ch}
+.muted{color:var(--smoke)}
+section{padding-block:76px;border-top:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:9;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font-family:Anton,Impact,sans-serif;font-size:22px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+.brand .logo{height:34px;width:auto;display:block}
+.logo-hero{width:min(520px,80%);height:auto;display:block;margin-bottom:26px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+nav ul a{text-decoration:none;color:var(--smoke)}
+nav ul a:hover{color:var(--bone)}
+@media(max-width:760px){nav ul{display:none}}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border:0;border-radius:3px;font-size:15px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--red2)}
+.btn.ghost{background:transparent;border:1px solid var(--bone);color:var(--bone)}
+.btn.ghost:hover{border-color:var(--red2);color:var(--red2)}
+header.hero{padding-block:80px 70px;position:relative;overflow:hidden}
+header.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(700px 320px at 20% 0%,rgba(214,38,46,.22),transparent 70%)}
+header.hero .wrap{position:relative}
+header.hero h1{font-size:clamp(40px,7vw,84px);line-height:.9}
+header.hero h1 span{display:block;color:var(--red2)}
+.lead{font-size:clamp(18px,2.2vw,22px);max-width:34ch;margin:22px 0 30px;color:var(--bone)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.tags span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);border:1px solid var(--line);padding:6px 10px;border-radius:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:34px;background:var(--line)}
+.services div{background:var(--carbon);padding:26px 24px}
+.services h3{margin-bottom:10px;color:var(--bone)}
+.services p{font-size:15px;color:var(--smoke);margin:0}
+@media(max-width:760px){.services{grid-template-columns:1fr}}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:34px}
+.gallery figure{margin:0;aspect-ratio:4/5;background:linear-gradient(160deg,#1c1c1f,#0e0e10);border:1px solid var(--line);display:flex;align-items:flex-end;padding:16px;position:relative;max-width:100%}
+.gallery figure:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,255,255,.025) 18px 19px)}
+.gallery figcaption{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);position:relative}
+@media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.models article{border:1px solid var(--line);background:var(--carbon);padding:22px}
+.models .ph{aspect-ratio:16/10;background:#0e0e10;border:1px dashed var(--line);margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:var(--smoke);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.models dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px;margin:12px 0 0}
+.models dt{color:var(--smoke)}.models dd{margin:0}
+@media(max-width:760px){.models{grid-template-columns:1fr}}
+form{display:grid;gap:14px;margin-top:28px;max-width:640px}
+label{display:grid;gap:6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);font-weight:600}
+input,select,textarea{font:inherit;font-size:16px;color:var(--bone);background:var(--carbon);border:1px solid var(--line);border-radius:3px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus,.btn:focus-visible,a:focus-visible{outline:2px solid var(--red2);outline-offset:2px}
+textarea{min-height:120px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--smoke)}
+.check input{width:auto;margin-top:4px}
+.drop{border:1px dashed var(--smoke);padding:22px;text-align:center;color:var(--smoke);font-size:14px;text-transform:none;letter-spacing:0;font-weight:400;cursor:pointer}
+.drop input{display:none}
+.prev{display:flex;gap:8px;flex-wrap:wrap}
+.prev img{width:96px;height:96px;object-fit:cover;border:1px solid var(--line)}
+.ok{background:var(--carbon);border-left:3px solid var(--red2);padding:16px 18px;margin-top:20px;display:none}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.contact div{border:1px solid var(--line);padding:22px}
+.contact strong{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);margin-bottom:8px}
+@media(max-width:760px){.contact{grid-template-columns:1fr}}
+.faq details{border-top:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:17px}
+.faq p{margin:10px 0 0;color:var(--smoke)}
+footer{border-top:1px solid var(--line);padding-block:30px;font-size:13px;color:var(--smoke)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--smoke)}
+.wa{position:fixed;right:18px;bottom:18px;z-index:9;background:#25d366;color:#fff;font-weight:600;text-decoration:none;padding:12px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.demo{position:fixed;left:14px;bottom:14px;z-index:9;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke);background:rgba(11,11,12,.9);border:1px solid var(--line);padding:6px 10px}
+@media(prefers-reduced-motion:no-preference){header.hero h1{animation:up .6s ease both}.lead,.ctas{animation:up .6s .12s ease both}@keyframes up{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"]}</script>
+</head><body>
+<nav><div class="wrap">
+<a class="brand" href="#top"><img class="logo" src="logo.png" alt="Bryan la Tinta"></a>
+<ul><li><a href="#hacemos">Qué hacemos</a></li><li><a href="#motos">Nuestras motos</a></li><li><a href="#modelos">Modelos</a></li><li><a href="#idea">Tu idea</a></li><li><a href="#prototipo">Prototipo</a></li><li><a href="#contacto">Contacto</a></li></ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+<p class="eyebrow">Sabadell · Barcelona</p>
+<img class="logo-hero" src="logo.png" alt="Bryan la Tinta">
+<h1>Pintura kustom<span>a tu manera</span></h1>
+<p class="lead">Motos, bicis, cascos y prototipos pintados a mano en nuestro taller. Aerografía, diseño y reparación de carbono. Si lo puedes imaginar, lo pintamos.</p>
+<div class="ctas"><a class="btn" href="#idea">Cuéntanos tu idea</a><a class="btn ghost" href="#motos">Ver trabajos</a></div>
+<div class="tags"><span>Pintura kustom</span><span>Aerografía</span><span>Cascos</span><span>Prototipos</span><span>Carbono</span><span>Bicis</span></div>
+</div></header>
+
+<section id="dedicamos"><div class="wrap two">
+<div><p class="eyebrow">A qué nos dedicamos</p><h2>Taller de pintura y aerografía</h2></div>
+<div>
+<p>Somos un taller de pintura kustom en Sabadell. Trabajamos sobre todo tipo de motos y bicis, pero también sobre cascos, piezas de carbono, prototipos y cualquier objeto que quieras convertir en algo único.</p>
+<p>Cada trabajo empieza con una conversación: nos cuentas la idea, miramos la pieza y te proponemos cómo hacerlo. Diseñamos, preparamos, pintamos y acabamos todo aquí, en el taller, con acabados pensados para durar en carretera.</p>
+<p class="muted">Sin prisas y sin trabajos en serie. Una pieza a la vez.</p>
+</div>
+</div></section>
+
+<section id="hacemos"><div class="wrap">
+<p class="eyebrow">Qué hacemos</p>
+<h2>Del boceto al acabado final</h2>
+<div class="services">
+<div><h3>Pintura kustom de motos</h3><p>Depósitos, guardabarros, carenados y motos completas. Colores sólidos, candy, flakes, degradados y acabados metalizados.</p></div>
+<div><h3>Bicis y cuadros</h3><p>Pintura personalizada de cuadros de carretera, MTB, gravel y BMX. Recuperamos cuadros con pintura dañada.</p></div>
+<div><h3>Cascos</h3><p>Diseño y pintura de cascos de moto y bici, réplicas de estilo clásico y diseños propios. Lacado final para protegerlos.</p></div>
+<div><h3>Aerografía</h3><p>Ilustración a mano con aerógrafo: retratos, letras, efectos realistas y detalles finos sobre cualquier superficie.</p></div>
+<div><h3>Pintura de prototipos</h3><p>Acabados para prototipos, maquetas y piezas de diseño: preparación, imprimación, color y barniz con acabado de producto final.</p></div>
+<div><h3>Reparación de carbono</h3><p>Reparamos y repintamos piezas de fibra de carbono y fibra de vidrio: grietas, golpes, desconchones y barniz deteriorado.</p></div>
+</div>
+</div></section>
+
+<section id="motos"><div class="wrap">
+<p class="eyebrow">Nuestras motos</p>
+<h2>Trabajos que han salido del taller</h2>
+<p class="muted">Una selección de motos, bicis y cascos pintados aquí. En Instagram publicamos cada proyecto nuevo.</p>
+<div class="gallery">
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+<figure><figcaption>Foto del proyecto</figcaption></figure>
+</div>
+</div></section>
+
+<section id="modelos"><div class="wrap">
+<p class="eyebrow">Modelos disponibles</p>
+<h2>Piezas listas para llevarse</h2>
+<p class="muted">Motos, bicis y cascos ya terminados que están a la venta o disponibles para personalizar. Pregúntanos por cualquiera.</p>
+<div class="models">
+<article><div class="ph">Foto</div><h3>Modelo disponible</h3><dl><dt>Tipo</dt><dd>Moto</dd><dt>Estado</dt><dd>Pintura terminada</dd><dt>Precio</dt><dd>A consultar</dd></dl></article>
+<article><div class="ph">Foto</div><h3>Modelo disponible</h3><dl><dt>Tipo</dt><dd>Bici</dd><dt>Estado</dt><dd>Cuadro pintado</dd><dt>Precio</dt><dd>A consultar</dd></dl></article>
+<article><div class="ph">Foto</div><h3>Modelo disponible</h3><dl><dt>Tipo</dt><dd>Casco</dd><dt>Estado</dt><dd>Diseño propio</dd><dt>Precio</dt><dd>A consultar</dd></dl></article>
+</div>
+</div></section>
+
+<section id="personalizados"><div class="wrap two">
+<div><p class="eyebrow">Trabajos personalizados</p><h2>Lo que quieras, pintado como quieras</h2>
+<p>Además de motos y bicis, hacemos pintura de prototipos, reparación de carbono y trabajos a medida sobre casi cualquier pieza: guitarras, consolas, cascos de competición, piezas de coche, mobiliario, maquetas o encargos de empresa.</p>
+<p class="muted">Si no sabes si tu pieza se puede pintar, mándanos una foto y te lo decimos.</p>
+<a class="btn ghost" href="#prototipo">Enviar una foto</a></div>
+<div class="faq">
+<details open><summary>¿Hacéis pintura de prototipos?</summary><p>Sí. Preparamos y pintamos prototipos y maquetas con acabado de producto final: imprimación, color exacto (RAL, Pantone o muestra) y barniz brillo o mate.</p></details>
+<details><summary>¿Reparáis piezas de carbono?</summary><p>Reparamos grietas, golpes y barniz deteriorado en piezas de fibra de carbono y fibra de vidrio, y las repintamos o dejamos el carbono visto.</p></details>
+<details><summary>¿Cuánto tarda un trabajo?</summary><p>Depende de la pieza y del diseño. Un casco sencillo va rápido; una moto completa con aerografía lleva más. Te damos plazo antes de empezar.</p></details>
+<details><summary>¿Puedo traer mi propio diseño?</summary><p>Claro. Trabajamos con tu boceto o idea, y si lo prefieres lo diseñamos nosotros a partir de lo que nos cuentes.</p></details>
+</div>
+</div></section>
+
+<section id="idea"><div class="wrap">
+<p class="eyebrow">Cuéntanos tu idea</p>
+<h2>¿Qué quieres pintar?</h2>
+<p class="muted">Rellena esto y te contestamos con una propuesta y un precio orientativo.</p>
+<form id="f-idea">
+<div class="row">
+<label>Tu nombre<input id="i-nombre" name="nombre" autocomplete="name" required></label>
+<label>Teléfono<input id="i-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +()-]{9,}" required></label>
+</div>
+<label>Email<input id="i-email" name="email" type="email" autocomplete="email" required></label>
+<label>Qué tienes<select id="i-tipo" name="tipo" required><option value="">Elige una opción</option><option>Moto</option><option>Bici</option><option>Casco</option><option>Pieza de carbono</option><option>Prototipo</option><option>Otra cosa</option></select></label>
+<label>Qué te gustaría hacer<textarea id="i-msg" name="mensaje" placeholder="Color, estilo, alguna referencia que te guste…" required></textarea></label>
+<label class="check"><input id="i-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
+<div><button class="btn" type="submit">Enviar mi idea</button></div>
+<div class="ok" id="ok-idea">Recibido. Te contestamos en cuanto lo veamos.</div>
+</form>
+</div></section>
+
+<section id="prototipo"><div class="wrap">
+<p class="eyebrow">Prototipo</p>
+<h2>Mándanos una foto de tu pieza</h2>
+<p class="muted">Prototipos, piezas de carbono o cualquier objeto raro: con una foto ya te podemos decir si se puede hacer y cómo.</p>
+<form id="f-proto">
+<div class="row">
+<label>Tu nombre<input id="p-nombre" name="nombre" autocomplete="name" required></label>
+<label>Teléfono<input id="p-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +()-]{9,}" required></label>
+</div>
+<label>Email<input id="p-email" name="email" type="email" autocomplete="email" required></label>
+<label>Fotos de la pieza
+<div class="drop" id="drop">Toca aquí para elegir fotos (hasta 4)<input id="p-fotos" type="file" accept="image/*" multiple></div>
+<div class="prev" id="prev"></div></label>
+<label>Qué quieres hacer con ella<textarea id="p-msg" name="mensaje" required></textarea></label>
+<label class="check"><input id="p-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
+<div><button class="btn" type="submit">Enviar fotos</button></div>
+<div class="ok" id="ok-proto">Recibido. Miramos las fotos y te decimos algo.</div>
+</form>
+</div></section>
+
+<section id="contacto"><div class="wrap">
+<p class="eyebrow">Contacta con nosotros</p>
+<h2>Pásate por el taller o escríbenos</h2>
+<div class="contact">
+<div><strong>WhatsApp · Teléfono</strong><p><a href="tel:+34651027177" style="text-decoration:none;font-size:20px;font-weight:600">651 02 71 77</a><br>Lo más rápido para fotos y dudas.</p><a class="btn" id="wa-btn" href="#">Abrir WhatsApp</a></div>
+<div><strong>Taller</strong><p>C/ Pare Fita 72, local<br>08203 Sabadell (Barcelona)<br>Lunes a viernes 8:00–20:30<br>Sábados 8:00–16:30</p></div>
+<div><strong>Redes</strong><p>Cada proyecto nuevo, en Instagram.</p><a class="btn ghost" href="https://www.instagram.com/bryan_la_tinta/" target="_blank" rel="noopener">@bryan_la_tinta</a></div>
+</div>
+</div></section>
+
+<footer><div class="wrap">
+<span>© 2026 Bryan la Tinta · Sabadell</span>
+<span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="https://rotulito.com" target="_blank" rel="noopener">Web hecha por Rotulito</a></span>
+</div></footer>
+<a class="wa" id="wa-float" href="#">WhatsApp</a>
+<div class="demo" id="demo-tag">Demo · fotos y datos pendientes</div>
+
+<script>
+(function(){
+  fetch('logo.txt').then(function(r){return r.text()}).then(function(t){document.querySelectorAll('img.logo,img.logo-hero').forEach(function(i){i.src='data:image/png;base64,'+t.trim()})});
+  var WA='34651027177';
+  var ENDPOINT='https://script.google.com/macros/s/AKfycbzyfV5e_4AnI3NI7Y8WIdNO7lRCNs6pmC3iJZ9wUmya-5oW5Z5UN7uDXJyGecFYRBEY-w/exec';
+  var DEMO=false;
+  var link=WA?'https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.'):'';
+  ['wa-btn','wa-float'].forEach(function(id){var a=document.getElementById(id);if(link)a.href=link;else a.style.display='none';});
+  if(!DEMO)document.getElementById('demo-tag').style.display='none';
+
+  var fotos=[];
+  var inp=document.getElementById('p-fotos'),prev=document.getElementById('prev');
+  document.getElementById('drop').addEventListener('click',function(){inp.click();});
+  inp.addEventListener('change',function(){
+    fotos=[];prev.innerHTML='';
+    Array.prototype.slice.call(inp.files,0,4).forEach(function(file){
+      var r=new FileReader();r.onload=function(e){
+        var img=new Image();img.onload=function(){
+          var c=document.createElement('canvas'),s=Math.min(1,1400/Math.max(img.width,img.height));
+          c.width=img.width*s;c.height=img.height*s;c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+          var d=c.toDataURL('image/jpeg',.82);fotos.push({name:file.name,data:d});
+          var t=document.createElement('img');t.src=d;prev.appendChild(t);
+        };img.src=e.target.result;};r.readAsDataURL(file);
+    });
+  });
+
+  function enviar(form,extra,okId){
+    var b=form.querySelector('button[type=submit]'),t0=b.textContent;b.disabled=true;b.textContent='Enviando…';
+    var fd=new FormData(form);var body=new URLSearchParams(fd);body.set('origen',form.id);
+    Object.keys(extra||{}).forEach(function(k){body.set(k,extra[k]);});
+    var done=function(){b.disabled=false;b.textContent=t0;document.getElementById(okId).style.display='block';form.reset();prev.innerHTML='';fotos=[];};
+    if(!ENDPOINT||DEMO){setTimeout(done,600);return;}
+    fetch(ENDPOINT,{method:'POST',body:body}).then(done).catch(function(){b.disabled=false;b.textContent=t0;alert('No se ha podido enviar. Escríbenos por WhatsApp.');});
+  }
+  document.getElementById('f-idea').addEventListener('submit',function(e){e.preventDefault();enviar(this,{},'ok-idea');});
+  document.getElementById('f-proto').addEventListener('submit',function(e){e.preventDefault();var x={};fotos.forEach(function(f,i){x['foto'+(i+1)]=f.data;x['nombrefoto'+(i+1)]=f.name;});enviar(this,x,'ok-proto');});
+})();
+</script>
+</body></html>
