@@ -152,19 +152,13 @@ footer a{color:var(--smoke)}
 <p class="eyebrow">Modelos disponibles</p>
 <h2>Piezas listas para llevarse</h2>
 <p class="muted">Motos ya terminadas en el taller, a la venta. Si te interesa alguna, escríbenos y te contamos todo.</p>
-<article class="moto">
-<div class="moto-gal">
-<img id="moto-main" src="sportster-01.jpg" alt="Harley-Davidson Sportster 2007 preparada por Bryan la Tinta" loading="lazy">
-<div class="thumbs">
-<img src="sportster-01.jpg" alt="" class="on"><img src="sportster-02.jpg" alt=""><img src="sportster-03.jpg" alt=""><img src="sportster-04.jpg" alt=""><img src="sportster-05.jpg" alt=""><img src="sportster-06.jpg" alt="">
-</div>
-</div>
+<article class="moto" style="grid-template-columns:1fr">
 <div class="moto-info">
 <h3>Harley-Davidson Sportster 2007</h3>
 <p class="price">11.000 €</p>
 <dl><dt>Año</dt><dd>2007</dd><dt>Kilómetros</dt><dd>17.000 km</dd><dt>Color</dt><dd>Negro</dd><dt>Estado</dt><dd>Preparación completa, se entrega con kit para ITV</dd></dl>
 <p>Pintada y preparada por completo en el taller. Estética custom con horquilla a medida, suspensión neumática, drag bar, escape Vance &amp; Hines, filtro Custom Machines, mandos avanzados, LED integrado, embrague Barnett y muchos detalles más.</p>
-<div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div>
+<div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="https://wa.me/34651027177?text=Hola%20Bryan%2C%20me%20puedes%20enviar%20fotos%20de%20la%20Sportster%202007">Pedir fotos por WhatsApp</a></div>
 </div>
 </article>
 <p class="muted" style="margin-top:26px">También tenemos recambios y accesorios Harley-Davidson (soportes, corbatas, amortiguadores, intermitentes, luces…). Pregúntanos por lo que necesites.</p>
@@ -197,7 +191,7 @@ footer a{color:var(--smoke)}
 <label>Qué te gustaría hacer<textarea id="i-msg" name="mensaje" placeholder="Color, estilo, alguna referencia que te guste…" required></textarea></label>
 <label class="check"><input id="i-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
 <div><button class="btn" type="submit">Enviar mi idea</button></div>
-<div class="ok" id="ok-idea">Recibido. Te contestamos en cuanto lo veamos.</div>
+<div class="ok" role="status" aria-live="polite" id="ok-idea">Recibido. Te contestamos en cuanto lo veamos.</div>
 </form>
 </div></section>
 
@@ -211,13 +205,14 @@ footer a{color:var(--smoke)}
 <label>Teléfono<input id="p-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +()-]{9,}" required></label>
 </div>
 <label>Email<input id="p-email" name="email" type="email" autocomplete="email" required></label>
-<label>Fotos de la pieza
-<div class="drop" id="drop">Toca aquí para elegir fotos (hasta 4)<input id="p-fotos" type="file" accept="image/*" multiple></div>
-<div class="prev" id="prev"></div></label>
+<label for="p-fotos">Fotos de la pieza (hasta 4, máximo 10 MB cada una)</label>
+<input id="p-fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required aria-describedby="foto-ayuda">
+<p id="foto-ayuda" class="muted">Formatos JPG, PNG o WebP. Espera a que aparezcan las miniaturas antes de enviar.</p>
+<div class="prev" id="prev" aria-live="polite"></div>
 <label>Qué quieres hacer con ella<textarea id="p-msg" name="mensaje" required></textarea></label>
 <label class="check"><input id="p-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
 <div><button class="btn" type="submit">Enviar fotos</button></div>
-<div class="ok" id="ok-proto">Recibido. Miramos las fotos y te decimos algo.</div>
+<div class="ok" role="status" aria-live="polite" id="ok-proto">Recibido. Miramos las fotos y te decimos algo.</div>
 </form>
 </div></section>
 
@@ -259,33 +254,73 @@ footer a{color:var(--smoke)}
   var link='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.');
   ['wa-btn','wa-float'].forEach(function(id){document.getElementById(id).href=link;});
   document.getElementById('wa-moto').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, he visto en la web la Harley-Davidson Sportster 2007 que tenéis a la venta y me interesa.');
-  var main=document.getElementById('moto-main');document.querySelectorAll('.thumbs img').forEach(function(t){t.addEventListener('click',function(){main.src=t.src;document.querySelectorAll('.thumbs img').forEach(function(x){x.classList.remove('on');});t.classList.add('on');});});
 
-  var fotos=[];
+
+  var fotos=[], photoJob=Promise.resolve(), photoVersion=0, photoError='';
   var inp=document.getElementById('p-fotos'),prev=document.getElementById('prev');
-  document.getElementById('drop').addEventListener('click',function(){inp.click();});
-  inp.addEventListener('change',function(){
-    fotos=[];prev.innerHTML='';
-    Array.prototype.slice.call(inp.files,0,4).forEach(function(file){
-      var r=new FileReader();r.onload=function(e){
-        var img=new Image();img.onload=function(){
-          var c=document.createElement('canvas'),s=Math.min(1,1400/Math.max(img.width,img.height));
-          c.width=img.width*s;c.height=img.height*s;c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-          var d=c.toDataURL('image/jpeg',.82);fotos.push({name:file.name,data:d});
-          var t=document.createElement('img');t.src=d;prev.appendChild(t);
-        };img.src=e.target.result;};r.readAsDataURL(file);
-    });
-  });
-
-  function enviar(form,extra,okId){
-    var b=form.querySelector('button[type=submit]'),t0=b.textContent;b.disabled=true;b.textContent='Enviando…';
-    var fd=new FormData(form);var body=new URLSearchParams(fd);body.set('origen',form.id);
-    Object.keys(extra||{}).forEach(function(k){body.set(k,extra[k]);});
-    var done=function(){b.disabled=false;b.textContent=t0;document.getElementById(okId).style.display='block';form.reset();prev.innerHTML='';fotos=[];};
-    fetch(ENDPOINT,{method:'POST',body:body}).then(done).catch(function(){b.disabled=false;b.textContent=t0;var m=document.getElementById('ferr');if(!m){m=document.createElement('p');m.id='ferr';m.style.color='#ff3b43';form.appendChild(m)}m.textContent='No se ha podido enviar. Escríbenos por WhatsApp.';});
+  function errorFor(form,message){
+    var id=form.id+'-error', el=document.getElementById(id);
+    if(!el){el=document.createElement('p');el.id=id;el.setAttribute('role','alert');el.style.color='#ff686e';form.appendChild(el);}
+    el.textContent=message;
   }
-  document.getElementById('f-idea').addEventListener('submit',function(e){e.preventDefault();enviar(this,{},'ok-idea');});
-  document.getElementById('f-proto').addEventListener('submit',function(e){e.preventDefault();var x={};fotos.forEach(function(f,i){x['foto'+(i+1)]=f.data;x['nombrefoto'+(i+1)]=f.name;});enviar(this,x,'ok-proto');});
+  function preparePhoto(file){
+    return new Promise(function(resolve,reject){
+      if(!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>10*1024*1024){reject(new Error('Usa fotos JPG, PNG o WebP de hasta 10 MB cada una.'));return;}
+      var reader=new FileReader();
+      reader.onerror=function(){reject(new Error('No se ha podido leer una foto. Vuelve a seleccionarla.'));};
+      reader.onload=function(){
+        var img=new Image();img.onerror=function(){reject(new Error('No se ha podido abrir una foto. Prueba con JPG o PNG.'));};
+        img.onload=function(){try{
+          var canvas=document.createElement('canvas'), scale=Math.min(1,1400/Math.max(img.width,img.height));
+          canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));
+          canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+          resolve({name:file.name.replace(/\.[^.]+$/,'')+'.jpg',data:canvas.toDataURL('image/jpeg',.82)});
+        }catch(e){reject(new Error('No se ha podido preparar una foto. Inténtalo con otra.'));}};
+        img.src=reader.result;
+      };reader.readAsDataURL(file);
+    });
+  }
+  inp.addEventListener('change',function(){
+    var version=++photoVersion, files=Array.from(inp.files), form=document.getElementById('f-proto');
+    fotos=[];prev.textContent='';photoError='';errorFor(form,'');
+    if(files.length>4){photoError='Puedes enviar hasta 4 fotos. Vuelve a seleccionarlas.';inp.setCustomValidity(photoError);errorFor(form,photoError);photoJob=Promise.resolve();return;}
+    inp.setCustomValidity('');
+    photoJob=Promise.all(files.map(preparePhoto)).then(function(result){
+      if(version!==photoVersion)return;
+      fotos=result;result.forEach(function(f){var img=document.createElement('img');img.src=f.data;img.alt='Vista previa de '+f.name;prev.appendChild(img);});
+    }).catch(function(e){if(version!==photoVersion)return;photoError=e.message;inp.setCustomValidity(photoError);errorFor(form,photoError);});
+  });
+  async function enviar(form,okId){
+    if(form.dataset.sending==='true'||!form.reportValidity())return;
+    form.dataset.sending='true';
+    var button=form.querySelector('button[type=submit]'), label=button.textContent;
+    var ok=document.getElementById(okId), controller=new AbortController(), timer;
+    button.disabled=true;button.textContent='Enviando…';ok.style.display='none';errorFor(form,'');
+    try{
+      var body=new URLSearchParams(new FormData(form));body.set('origen',form.id);
+      if(form.id==='f-proto'){
+        inp.disabled=true;
+        await photoJob;
+        if(photoError||!fotos.length)throw new Error(photoError||'Selecciona al menos una foto.');
+        fotos.forEach(function(f,i){body.set('foto'+(i+1),f.data);body.set('nombrefoto'+(i+1),f.name);});
+      }
+      timer=setTimeout(function(){controller.abort();},45000);
+      var response=await fetch(ENDPOINT,{method:'POST',body:body,signal:controller.signal});
+      if(!response.ok)throw new Error('No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.');
+      var result=await response.json();
+      if(!result||result.ok!==true)throw new Error('No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.');
+      form.reset();ok.style.display='block';
+      if(form.id==='f-proto'){photoVersion++;fotos=[];prev.textContent='';photoError='';inp.setCustomValidity('');}
+    }catch(e){
+      errorFor(form,e instanceof SyntaxError||e.name==='AbortError'||e instanceof TypeError?'No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.':e.message);
+    }finally{
+      clearTimeout(timer);button.disabled=false;button.textContent=label;form.dataset.sending='false';
+      if(form.id==='f-proto')inp.disabled=false;
+    }
+  }
+  document.getElementById('f-idea').addEventListener('submit',function(e){e.preventDefault();enviar(this,'ok-idea');});
+  document.getElementById('f-proto').addEventListener('submit',function(e){e.preventDefault();enviar(this,'ok-proto');});
 })();
 </script>
 </body></html>
+
