@@ -51,7 +51,7 @@ header.hero h1 span{display:block;color:var(--red2)}
 .gallery figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:#151517;border:1px solid var(--line);position:relative;max-width:100%}
 @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
 .moto{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;margin-top:34px;border:1px solid var(--line);background:var(--carbon);padding:18px}
-.moto-gal img#moto-main{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--line);background:#0e0e10}
+.moto-gal img.moto-main-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--line);background:#0e0e10}
 .thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:6px}
 .thumbs img{width:100%;aspect-ratio:1;object-fit:cover;display:block;cursor:pointer;opacity:.55;border:1px solid var(--line)}
 .thumbs img.on,.thumbs img:hover{opacity:1;border-color:var(--red2)}
@@ -134,17 +134,7 @@ footer a{color:var(--smoke)}
 <p class="eyebrow">Nuestras motos</p>
 <h2>Trabajos que han salido del taller</h2>
 <p class="muted">Una selección de motos, bicis y cascos pintados aquí. En Instagram publicamos cada proyecto nuevo.</p>
-<div class="gallery">
-<figure><img src="bryan-01.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-02.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-03.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-04.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-05.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-06.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-07.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-08.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-<figure><img src="bryan-09.jpg" alt="Trabajo de pintura kustom de Bryan la Tinta" loading="lazy"></figure>
-</div>
+<div class="gallery" id="galeria"></div>
 <p class="muted" style="margin-top:18px">Más proyectos, cada semana, en <a href="https://www.instagram.com/bryan_la_tinta/" target="_blank" rel="noopener">@bryan_la_tinta</a>.</p>
 </div></section>
 
@@ -152,21 +142,7 @@ footer a{color:var(--smoke)}
 <p class="eyebrow">Modelos disponibles</p>
 <h2>Piezas listas para llevarse</h2>
 <p class="muted">Motos ya terminadas en el taller, a la venta. Si te interesa alguna, escríbenos y te contamos todo.</p>
-<article class="moto">
-<div class="moto-gal">
-<img id="moto-main" src="sportster-01.jpg" alt="Harley-Davidson Sportster 2007 preparada por Bryan la Tinta" loading="lazy">
-<div class="thumbs">
-<img src="sportster-01.jpg" alt="" class="on"><img src="sportster-02.jpg" alt=""><img src="sportster-03.jpg" alt=""><img src="sportster-04.jpg" alt=""><img src="sportster-05.jpg" alt=""><img src="sportster-06.jpg" alt="">
-</div>
-</div>
-<div class="moto-info">
-<h3>Harley-Davidson Sportster 2007</h3>
-<p class="price">11.000 €</p>
-<dl><dt>Año</dt><dd>2007</dd><dt>Kilómetros</dt><dd>17.000 km</dd><dt>Color</dt><dd>Negro</dd><dt>Estado</dt><dd>Preparación completa, se entrega con kit para ITV</dd></dl>
-<p>Pintada y preparada por completo en el taller. Estética custom con horquilla a medida, suspensión neumática, drag bar, escape Vance &amp; Hines, filtro Custom Machines, mandos avanzados, LED integrado, embrague Barnett y muchos detalles más.</p>
-<p class="muted">Antes de reservar te facilitamos la identidad y condición del vendedor, el precio total, los gastos de transferencia y las condiciones y garantías que correspondan. Consultar no formaliza una compra.</p><div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div>
-</div>
-</article>
+<div id="modelos-lista"></div>
 <p class="muted" style="margin-top:26px">También tenemos recambios y accesorios Harley-Davidson (soportes, corbatas, amortiguadores, intermitentes, luces…). Pregúntanos por lo que necesites.</p>
 </div></section>
 
@@ -251,8 +227,42 @@ footer a{color:var(--smoke)}
   var ENDPOINT='https://script.google.com/macros/s/AKfycbzyfV5e_4AnI3NI7Y8WIdNO7lRCNs6pmC3iJZ9wUmya-5oW5Z5UN7uDXJyGecFYRBEY-w/exec';
   var link='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.');
   ['wa-btn','wa-float'].forEach(function(id){document.getElementById(id).href=link;});
-  document.getElementById('wa-moto').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, he visto en la web la Harley-Davidson Sportster 2007 que tenéis a la venta y me interesa.');
-  var main=document.getElementById('moto-main');document.querySelectorAll('.thumbs img').forEach(function(t){t.addEventListener('click',function(){main.src=t.src;document.querySelectorAll('.thumbs img').forEach(function(x){x.classList.remove('on');});t.classList.add('on');});});
+  fetch('data/galeria.json').then(function(r){return r.json();}).then(function(d){
+    var el=document.getElementById('galeria');
+    (d.fotos||[]).forEach(function(f){
+      var fig=document.createElement('figure');
+      var img=document.createElement('img');
+      img.src=f.src;img.alt=f.alt||'Trabajo de pintura kustom de Bryan la Tinta';img.loading='lazy';
+      fig.appendChild(img);el.appendChild(fig);
+    });
+  }).catch(function(){});
+
+  fetch('data/modelos.json').then(function(r){return r.json();}).then(function(d){
+    var el=document.getElementById('modelos-lista');
+    (d.motos||[]).forEach(function(m){
+      var fotos=m.fotos||[];
+      var mainSrc=fotos[0]?fotos[0].src:'';
+      var thumbsHtml=fotos.map(function(f,i){return '<img src="'+f.src+'" alt="" class="'+(i===0?'on':'')+'">';}).join('');
+      var art=document.createElement('article');art.className='moto';
+      art.innerHTML=
+        '<div class="moto-gal"><img class="moto-main-img" src="'+mainSrc+'" alt="'+m.nombre+' preparada por Bryan la Tinta" loading="lazy"><div class="thumbs">'+thumbsHtml+'</div></div>'+
+        '<div class="moto-info"><h3>'+m.nombre+'</h3><p class="price">'+m.precio+'</p>'+
+        '<dl><dt>Año</dt><dd>'+m.anio+'</dd><dt>Kilómetros</dt><dd>'+m.km+'</dd><dt>Color</dt><dd>'+m.color+'</dd><dt>Estado</dt><dd>'+m.estado+'</dd></dl>'+
+        '<p>'+m.descripcion+'</p>'+
+        '<p class="muted">Antes de reservar te facilitamos la identidad y condición del vendedor, el precio total, los gastos de transferencia y las condiciones y garantías que correspondan. Consultar no formaliza una compra.</p>'+
+        '<div class="ctas"><a class="btn wa-moto-btn" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div></div>';
+      el.appendChild(art);
+      var mainImg=art.querySelector('.moto-main-img');
+      art.querySelectorAll('.thumbs img').forEach(function(t){
+        t.addEventListener('click',function(){
+          mainImg.src=t.src;
+          art.querySelectorAll('.thumbs img').forEach(function(x){x.classList.remove('on');});
+          t.classList.add('on');
+        });
+      });
+      art.querySelector('.wa-moto-btn').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, he visto en la web la '+m.nombre+' que tenéis a la venta y me interesa.');
+    });
+  }).catch(function(){});
 
 
   var fotos=[], photoJob=Promise.resolve(), photoVersion=0, photoError='';
