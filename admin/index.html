@@ -52,6 +52,9 @@ button:disabled{opacity:.6;cursor:default}
   var auth = new GoTrue({ APIUrl: IDENTITY_URL, setCookie: true });
   if (window.netlifyIdentity && window.netlifyIdentity.init) {
     window.netlifyIdentity.init({ APIUrl: IDENTITY_URL });
+    if (window.netlifyIdentity.gotrue && window.netlifyIdentity.gotrue.api) {
+      window.netlifyIdentity.gotrue.api.apiURL = IDENTITY_URL;
+    }
   }
 
   var screen = document.getElementById('login-screen');
