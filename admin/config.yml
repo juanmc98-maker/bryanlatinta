@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-  base_url: https://rotulito-bryanlatinta-cms.netlify.app
-  auth_endpoint: .netlify/identity
+  identity_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/identity
+  gateway_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/git
 
 media_folder: ""
 public_folder: "/"
