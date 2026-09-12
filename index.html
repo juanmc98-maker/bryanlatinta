@@ -92,7 +92,7 @@ footer a{color:var(--smoke)}
 .wa{position:fixed;right:18px;bottom:18px;z-index:9;background:#25d366;color:#fff;font-weight:600;text-decoration:none;padding:12px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 @media(prefers-reduced-motion:no-preference){header.hero h1{animation:up .6s ease both}.lead,.ctas{animation:up .6s .12s ease both}@keyframes up{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"],"hasMap":"https://maps.google.com/?cid=964268582447954132","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"27"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"],"hasMap":"https://maps.google.com/?cid=964268582447954132"}</script>
 </head><body>
 <nav><div class="wrap">
 <a class="brand" href="#top"><img class="logo" src="logo.png" alt="Bryan la Tinta"></a>
@@ -164,7 +164,7 @@ footer a{color:var(--smoke)}
 <p class="price">11.000 €</p>
 <dl><dt>Año</dt><dd>2007</dd><dt>Kilómetros</dt><dd>17.000 km</dd><dt>Color</dt><dd>Negro</dd><dt>Estado</dt><dd>Preparación completa, se entrega con kit para ITV</dd></dl>
 <p>Pintada y preparada por completo en el taller. Estética custom con horquilla a medida, suspensión neumática, drag bar, escape Vance &amp; Hines, filtro Custom Machines, mandos avanzados, LED integrado, embrague Barnett y muchos detalles más.</p>
-<div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div>
+<p class="muted">Antes de reservar te facilitamos la identidad y condición del vendedor, el precio total, los gastos de transferencia y las condiciones y garantías que correspondan. Consultar no formaliza una compra.</p><div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div>
 </div>
 </article>
 <p class="muted" style="margin-top:26px">También tenemos recambios y accesorios Harley-Davidson (soportes, corbatas, amortiguadores, intermitentes, luces…). Pregúntanos por lo que necesites.</p>
@@ -195,8 +195,8 @@ footer a{color:var(--smoke)}
 <label>Email<input id="i-email" name="email" type="email" autocomplete="email" required></label>
 <label>Qué tienes<select id="i-tipo" name="tipo" required><option value="">Elige una opción</option><option>Moto</option><option>Bici</option><option>Casco</option><option>Pieza de carbono</option><option>Prototipo</option><option>Otra cosa</option></select></label>
 <label>Qué te gustaría hacer<textarea id="i-msg" name="mensaje" placeholder="Color, estilo, alguna referencia que te guste…" required></textarea></label>
-<label class="check"><input id="i-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
-<div><button class="btn" type="submit">Enviar mi idea</button></div>
+<label class="check"><input id="i-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> sobre el uso de mis datos para responder a esta solicitud.</label>
+<p class="muted" style="font-size:14px">Responsable: Bryan Espinosa (Bryan la Tinta). Usamos los datos y las fotos que envíes para valorar tu solicitud y preparar el presupuesto, como medidas precontractuales. Rotulito presta soporte técnico. No te suscribes a publicidad. Derechos de acceso, rectificación, supresión y demás derechos en espinosa_bryan@hotmail.com. <a href="/privacidad.html">Más información</a>.</p><div><button class="btn" type="submit">Enviar mi idea</button></div>
 <div class="ok" role="status" aria-live="polite" id="ok-idea">Recibido. Te contestamos en cuanto lo veamos.</div>
 </form>
 </div></section>
@@ -213,11 +213,11 @@ footer a{color:var(--smoke)}
 <label>Email<input id="p-email" name="email" type="email" autocomplete="email" required></label>
 <label for="p-fotos">Fotos de la pieza (hasta 4, máximo 10 MB cada una)</label>
 <input id="p-fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required aria-describedby="foto-ayuda">
-<p id="foto-ayuda" class="muted">Formatos JPG, PNG o WebP. Espera a que aparezcan las miniaturas antes de enviar.</p>
+<p id="foto-ayuda" class="muted">Envía solo fotos necesarias de la pieza y evita documentos, caras u otros datos personales. Formatos JPG, PNG o WebP. Espera a que aparezcan las miniaturas antes de enviar.</p>
 <div class="prev" id="prev" aria-live="polite"></div>
 <label>Qué quieres hacer con ella<textarea id="p-msg" name="mensaje" required></textarea></label>
-<label class="check"><input id="p-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> y acepto que uséis estos datos solo para responderme.</label>
-<div><button class="btn" type="submit">Enviar fotos</button></div>
+<label class="check"><input id="p-priv" name="privacidad" type="checkbox" required> He leído la <a href="privacidad.html">política de privacidad</a> sobre el uso de mis datos para responder a esta solicitud.</label>
+<p class="muted" style="font-size:14px">Responsable: Bryan Espinosa (Bryan la Tinta). Usamos los datos y las fotos que envíes para valorar tu solicitud y preparar el presupuesto, como medidas precontractuales. Rotulito presta soporte técnico. No te suscribes a publicidad. Derechos de acceso, rectificación, supresión y demás derechos en espinosa_bryan@hotmail.com. <a href="/privacidad.html">Más información</a>.</p><div><button class="btn" type="submit">Enviar fotos</button></div>
 <div class="ok" role="status" aria-live="polite" id="ok-proto">Recibido. Miramos las fotos y te decimos algo.</div>
 </form>
 </div></section>
@@ -225,15 +225,7 @@ footer a{color:var(--smoke)}
 <section id="resenas"><div class="wrap">
 <p class="eyebrow">Reseñas</p>
 <h2>Lo que dice la gente que ha pasado por el taller</h2>
-<p class="rating"><strong>4,9</strong> <span class="stars">★★★★★</span> <span class="muted">sobre 5 · 27 reseñas en Google</span></p>
-<div class="reviews">
-<blockquote><span class="stars">★★★★★</span><p>Me hizo un gran trabajo en el depósito, es un gran artista de los que ya no quedan.</p><cite>Jose Luis F. · Google</cite></blockquote>
-<blockquote><span class="stars">★★★★★</span><p>Donde traes una mera motocicleta y sales con una obra de arte. Bryan La Tinta, lo mejor que hay.</p><cite>Franklin · Google</cite></blockquote>
-<blockquote><span class="stars">★★★★★</span><p>El mejor pintor de motos que hay. Además de buen tío y trato excelente. Un diez.</p><cite>Xavier R. · Google</cite></blockquote>
-<blockquote><span class="stars">★★★★★</span><p>Un lujo. Si quieres pintar tu bici, Bryan es el pintor ideal: cuida los detalles al máximo, es un profesional.</p><cite>Alfonso Y. · Google</cite></blockquote>
-<blockquote><span class="stars">★★★★★</span><p>Buen servicio, te aconsejan lo mejor para que no gastes innecesariamente.</p><cite>Edu · Google</cite></blockquote>
-<blockquote><span class="stars">★★★★★</span><p>Un gran profesional y mejor persona. Es un crack.</p><cite>Jordi C. · Google</cite></blockquote>
-</div>
+<p class="muted">Consulta las valoraciones de clientes directamente en Google, con sus fechas y puntuaciones actualizadas.</p>
 <div class="ctas" style="margin-top:26px"><a class="btn ghost" href="https://maps.google.com/?cid=964268582447954132" target="_blank" rel="noopener">Ver todas las reseñas en Google</a><a class="btn ghost" href="https://maps.google.com/?cid=964268582447954132" target="_blank" rel="noopener">Escribir una reseña</a></div>
 </div></section>
 
