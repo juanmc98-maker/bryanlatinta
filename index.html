@@ -152,13 +152,19 @@ footer a{color:var(--smoke)}
 <p class="eyebrow">Modelos disponibles</p>
 <h2>Piezas listas para llevarse</h2>
 <p class="muted">Motos ya terminadas en el taller, a la venta. Si te interesa alguna, escríbenos y te contamos todo.</p>
-<article class="moto" style="grid-template-columns:1fr">
+<article class="moto">
+<div class="moto-gal">
+<img id="moto-main" src="sportster-01.jpg" alt="Harley-Davidson Sportster 2007 preparada por Bryan la Tinta" loading="lazy">
+<div class="thumbs">
+<img src="sportster-01.jpg" alt="" class="on"><img src="sportster-02.jpg" alt=""><img src="sportster-03.jpg" alt=""><img src="sportster-04.jpg" alt=""><img src="sportster-05.jpg" alt=""><img src="sportster-06.jpg" alt="">
+</div>
+</div>
 <div class="moto-info">
 <h3>Harley-Davidson Sportster 2007</h3>
 <p class="price">11.000 €</p>
 <dl><dt>Año</dt><dd>2007</dd><dt>Kilómetros</dt><dd>17.000 km</dd><dt>Color</dt><dd>Negro</dd><dt>Estado</dt><dd>Preparación completa, se entrega con kit para ITV</dd></dl>
 <p>Pintada y preparada por completo en el taller. Estética custom con horquilla a medida, suspensión neumática, drag bar, escape Vance &amp; Hines, filtro Custom Machines, mandos avanzados, LED integrado, embrague Barnett y muchos detalles más.</p>
-<div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="https://wa.me/34651027177?text=Hola%20Bryan%2C%20me%20puedes%20enviar%20fotos%20de%20la%20Sportster%202007">Pedir fotos por WhatsApp</a></div>
+<div class="ctas"><a class="btn" id="wa-moto" href="#">Me interesa</a><a class="btn ghost" href="#contacto">Ver contacto</a></div>
 </div>
 </article>
 <p class="muted" style="margin-top:26px">También tenemos recambios y accesorios Harley-Davidson (soportes, corbatas, amortiguadores, intermitentes, luces…). Pregúntanos por lo que necesites.</p>
@@ -254,6 +260,7 @@ footer a{color:var(--smoke)}
   var link='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, vengo de la web. Quería consultar por un trabajo de pintura.');
   ['wa-btn','wa-float'].forEach(function(id){document.getElementById(id).href=link;});
   document.getElementById('wa-moto').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Bryan, he visto en la web la Harley-Davidson Sportster 2007 que tenéis a la venta y me interesa.');
+  var main=document.getElementById('moto-main');document.querySelectorAll('.thumbs img').forEach(function(t){t.addEventListener('click',function(){main.src=t.src;document.querySelectorAll('.thumbs img').forEach(function(x){x.classList.remove('on');});t.classList.add('on');});});
 
 
   var fotos=[], photoJob=Promise.resolve(), photoVersion=0, photoError='';
