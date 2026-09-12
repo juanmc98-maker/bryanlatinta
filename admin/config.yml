@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: ""
+public_folder: "/"
+
+locale: "es"
+
+collections:
+  - name: "galeria"
+    label: "Galería de trabajos"
+    files:
+      - file: "data/galeria.json"
+        label: "Fotos de la galería"
+        name: "galeria"
+        fields:
+          - label: "Fotos"
+            name: "fotos"
+            widget: "list"
+            fields:
+              - {label: "Foto", name: "src", widget: "image"}
+              - {label: "Descripción (texto alternativo)", name: "alt", widget: "string", default: "Trabajo de pintura kustom de Bryan la Tinta"}
+
+  - name: "modelos"
+    label: "Motos en venta"
+    files:
+      - file: "data/modelos.json"
+        label: "Modelos disponibles"
+        name: "modelos"
+        fields:
+          - label: "Motos"
+            name: "motos"
+            widget: "list"
+            fields:
+              - {label: "Nombre del modelo", name: "nombre", widget: "string"}
+              - {label: "Precio (con €)", name: "precio", widget: "string"}
+              - {label: "Año", name: "anio", widget: "string"}
+              - {label: "Kilómetros", name: "km", widget: "string"}
+              - {label: "Color", name: "color", widget: "string"}
+              - {label: "Estado", name: "estado", widget: "string"}
+              - {label: "Descripción", name: "descripcion", widget: "text"}
+              - label: "Fotos"
+                name: "fotos"
+                widget: "list"
+                fields:
+                  - {label: "Foto", name: "src", widget: "image"}
