@@ -1,23 +1,88 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="robots" content="noindex" />
-  <title>Panel de gestión · Bryan la Tinta</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex" />
+<title>Panel de gestión · Bryan la Tinta</title>
+<link rel="cms-config-url" href="config.yml">
+<style>
+:root{--ink:#0b0b0c;--carbon:#151517;--line:#2c2c30;--bone:#ebe6dc;--smoke:#9a968e;--red:#d6262e;--red2:#ff3b43}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:16px;-webkit-font-smoothing:antialiased}
+h1{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px;font-size:30px;line-height:1}
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:100%;max-width:420px;background:var(--carbon);border:1px solid var(--line);border-radius:6px;padding:36px 32px}
+.logo{height:28px;margin-bottom:24px;filter:invert(1);display:block}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red2);font-weight:600;margin:0 0 14px}
+.sub{color:var(--smoke);margin:0 0 26px;font-size:15px}
+label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke);font-weight:600;margin-bottom:6px}
+.field{margin-bottom:18px}
+input{width:100%;font:inherit;font-size:16px;color:var(--bone);background:var(--ink);border:1px solid var(--line);border-radius:3px;padding:12px 14px}
+input:focus{outline:2px solid var(--red2);outline-offset:2px}
+button{width:100%;background:var(--red);color:#fff;border:0;border-radius:999px;padding:14px;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:pointer;margin-top:6px;font-family:inherit}
+button:hover{background:var(--red2)}
+button:disabled{opacity:.6;cursor:default}
+.err{color:#ff8a8f;font-size:14px;margin-top:14px;display:none}
+</style>
 </head>
 <body>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function(user) {
-        if (!user) {
-          window.netlifyIdentity.on("login", function() {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<div id="login-screen">
+  <div class="card">
+    <img class="logo" src="/logo.png" alt="Bryan la Tinta">
+    <p class="eyebrow">Panel</p>
+    <h1>Iniciar sesión</h1>
+    <p class="sub">Accede al panel de gestión de Bryan la Tinta.</p>
+    <form id="login-form">
+      <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="username"></div>
+      <div class="field"><label for="pass">Contraseña</label><input id="pass" type="password" required autocomplete="current-password"></div>
+      <button type="submit" id="submit-btn">Entrar</button>
+      <p class="err" id="err"></p>
+    </form>
+  </div>
+</div>
+
+<script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
+<script src="https://unpkg.com/gotrue-js@0.9.30/dist/gotrue.min.js"></script>
+<script>window.CMS_MANUAL_INIT = true;</script>
+<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<script>
+(function(){
+  var IDENTITY_URL = 'https://rotulito-bryanlatinta-cms.netlify.app/.netlify/identity';
+  var auth = new GoTrue({ APIUrl: IDENTITY_URL, setCookie: true });
+  if (window.netlifyIdentity && window.netlifyIdentity.init) {
+    window.netlifyIdentity.init({ APIUrl: IDENTITY_URL });
+  }
+
+  var screen = document.getElementById('login-screen');
+  var form = document.getElementById('login-form');
+  var errEl = document.getElementById('err');
+  var btn = document.getElementById('submit-btn');
+
+  function startCMS(){
+    screen.style.display = 'none';
+    if (window.CMS && window.CMS.init) window.CMS.init();
+  }
+
+  if (auth.currentUser()) {
+    startCMS();
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Entrando…';
+    var email = document.getElementById('email').value;
+    var pass = document.getElementById('pass').value;
+    auth.login(email, pass, true).then(function(){
+      window.location.reload();
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Entrar';
+      errEl.textContent = 'Email o contraseña incorrectos.';
+      errEl.style.display = 'block';
+    });
+  });
+})();
+</script>
 </body>
 </html>
