@@ -42,8 +42,4 @@ collections:
               - {label: "Color", name: "color", widget: "string"}
               - {label: "Estado", name: "estado", widget: "string"}
               - {label: "Descripción", name: "descripcion", widget: "text"}
-              - label: "Fotos"
-                name: "fotos"
-                widget: "list"
-                fields:
-                  - {label: "Foto", name: "src", widget: "image"}
+              - {label: "Fotos", name: "fotos", widget: "image", multiple: true, media_library: {config: {multiple: true}}}
