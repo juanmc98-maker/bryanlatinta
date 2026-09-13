@@ -9,13 +9,40 @@
       "estado": "Preparación completa, se entrega con kit para ITV",
       "descripcion": "Pintada y preparada por completo en el taller. Estética custom con horquilla a medida, suspensión neumática, drag bar, escape Vance & Hines, filtro Custom Machines, mandos avanzados, LED integrado, embrague Barnett y muchos detalles más.",
       "fotos": [
-        {"src": "sportster-01.jpg"},
-        {"src": "sportster-02.jpg"},
-        {"src": "sportster-03.jpg"},
-        {"src": "sportster-04.jpg"},
-        {"src": "sportster-05.jpg"},
-        {"src": "sportster-06.jpg"}
+        {
+          "src": "sportster-01.jpg"
+        },
+        {
+          "src": "sportster-02.jpg"
+        },
+        {
+          "src": "sportster-03.jpg"
+        },
+        {
+          "src": "sportster-04.jpg"
+        },
+        {
+          "src": "sportster-05.jpg"
+        },
+        {
+          "src": "sportster-06.jpg"
+        }
       ]
-    }
+    },
+    {
+      "nombre": "asdasf",
+      "precio": "123123",
+      "anio": "123123",
+      "km": "123123",
+      "color": "qwfq",
+      "estado": "sgsg",
+      "descripcion": "sgsdg",
+      "fotos": [
+        {
+          "src": "/img/sportster-04.jpg"
+        }
+      ]
+    },
+    {}
   ]
 }
