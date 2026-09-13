@@ -35,14 +35,14 @@ html,body{background:var(--ink) !important}
 /* Cabecera superior (Contenido / Medios / usuario) */
 [class*="AppHeader"]{background:var(--carbon) !important;border-bottom:1px solid var(--line) !important;box-shadow:none !important}
 [class*="AppHeaderNavLink"],[class*="AppHeaderButton"]{color:var(--smoke) !important;font-weight:600 !important;letter-spacing:.04em}
-[class*="AppHeaderNavLink"].header-link-active,[class*="AppHeaderButton"].header-link-active,[class*="AppHeaderNavLink"][class*="buttonActive"]{color:var(--red2) !important}
+[class*="AppHeaderNavLink"].header-link-active,[class*="AppHeaderButton"].header-link-active{color:var(--red2) !important}
 [class*="AppHeader"] svg{fill:var(--bone) !important;color:var(--bone) !important}
 
 /* Paneles/tarjetas blancas (sidebar de colecciones, listados, cabecera de colección) */
 [class*="-card-"],[class*="cardTop"],[class*="CollectionTopContainer"]{background:var(--carbon) !important;border:1px solid var(--line) !important;box-shadow:none !important;color:var(--bone) !important}
 [class*="SidebarHeading"]{color:var(--smoke) !important;font-family:Anton,Impact,sans-serif !important;text-transform:uppercase;letter-spacing:.04em}
-[class*="SidebarNavLink"]{color:var(--bone) !important;background:transparent !important}
-[class*="SidebarNavLink"].sidebar-active,[class*="SidebarNavLink"][class*="sidebarNavLinkActive"]{color:var(--red2) !important;font-weight:600;background:rgba(255,59,67,.08) !important;border-left:3px solid var(--red2) !important}
+[class*="SidebarNavLink"]{color:var(--bone) !important;background:transparent !important;border-left:3px solid transparent !important}
+[class*="SidebarNavLink"].sidebar-active{color:var(--red2) !important;font-weight:600;background:rgba(255,59,67,.08) !important;border-left:3px solid var(--red2) !important}
 [class*="SidebarNavLink"]:hover{color:var(--red2) !important}
 
 /* Filas de entradas / tarjetas de listado */
