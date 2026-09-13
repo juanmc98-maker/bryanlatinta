@@ -30,7 +30,7 @@
       ]
     },
     {
-      "nombre": "prueba",
+      "nombre": "pruebaaaa buena",
       "precio": "12312",
       "anio": "12312",
       "km": "1232",
@@ -40,6 +40,9 @@
       "fotos": [
         {
           "src": "/img/sportster-01.jpg"
+        },
+        {
+          "src": "/img/sportster-04.jpg"
         }
       ]
     }
