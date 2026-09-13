@@ -27,7 +27,8 @@ button:disabled{opacity:.6;cursor:default}
 .err{color:#ff8a8f;font-size:14px;margin-top:14px;display:none}
 
 /* ===== Reskin del editor Decap CMS con la marca de Bryan la Tinta ===== */
-#nc-root, [class*="AppMainContainer"]{background:var(--ink) !important}
+html,body{background:var(--ink) !important}
+#nc-root, [class*="AppMainContainer"]{background:var(--ink) !important;min-height:100vh}
 #nc-root, [class*="AppMainContainer"], [class*="EditorContainer"], [class*="CollectionMain"]{color:var(--bone) !important;font-family:Barlow,"Helvetica Neue",Arial,sans-serif !important}
 #nc-root h1,#nc-root h2,#nc-root h3{font-family:Anton,Impact,"Arial Narrow",sans-serif !important;font-weight:400 !important;text-transform:uppercase;letter-spacing:.02em}
 
@@ -40,8 +41,8 @@ button:disabled{opacity:.6;cursor:default}
 /* Paneles/tarjetas blancas (sidebar de colecciones, listados, cabecera de colección) */
 [class*="-card-"],[class*="cardTop"],[class*="CollectionTopContainer"]{background:var(--carbon) !important;border:1px solid var(--line) !important;box-shadow:none !important;color:var(--bone) !important}
 [class*="SidebarHeading"]{color:var(--smoke) !important;font-family:Anton,Impact,sans-serif !important;text-transform:uppercase;letter-spacing:.04em}
-[class*="SidebarNavLink"]{color:var(--bone) !important}
-[class*="SidebarNavLink"].sidebar-active,[class*="SidebarNavLink"][class*="sidebarNavLinkActive"]{color:var(--red2) !important;font-weight:600}
+[class*="SidebarNavLink"]{color:var(--bone) !important;background:transparent !important}
+[class*="SidebarNavLink"].sidebar-active,[class*="SidebarNavLink"][class*="sidebarNavLinkActive"]{color:var(--red2) !important;font-weight:600;background:rgba(255,59,67,.08) !important;border-left:3px solid var(--red2) !important}
 [class*="SidebarNavLink"]:hover{color:var(--red2) !important}
 
 /* Filas de entradas / tarjetas de listado */
@@ -69,6 +70,8 @@ button:disabled{opacity:.6;cursor:default}
 /* Widget de lista (fotos) */
 [class*="SortableListItem"]{background:var(--carbon) !important;border:1px solid var(--line) !important}
 [class*="ObjectWidgetTopBar"]{background:var(--carbon) !important;color:var(--bone) !important;border-bottom:1px solid var(--line) !important}
+[class*="FieldLabel"],[class*="TopBarContainer"],[class*="NestedObjectLabel"]{background:var(--carbon) !important;color:var(--bone) !important}
+[class*="TopBarContainer"] *,[class*="NestedObjectLabel"] *{color:var(--bone) !important}
 
 /* Biblioteca de medios (modal) */
 [class*="MediaLibrary"],[role="dialog"]{background:var(--carbon) !important;color:var(--bone) !important}
