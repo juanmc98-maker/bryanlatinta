@@ -4,8 +4,8 @@ backend:
   identity_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/identity
   gateway_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/git
 
-media_folder: ""
-public_folder: "/"
+media_folder: "img"
+public_folder: "/img"
 
 locale: "es"
 
