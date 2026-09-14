@@ -1,8 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: juanmc98-maker/bryanlatinta
   branch: main
-  identity_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/identity
-  gateway_url: https://rotulito-bryanlatinta-cms.netlify.app/.netlify/git
+  base_url: https://platamarine-cms-auth.vercel.app
 
 media_folder: "img"
 public_folder: "/img"
