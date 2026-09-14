@@ -11,6 +11,77 @@
 :root{--ink:#0b0b0c;--carbon:#151517;--line:#2c2c30;--bone:#ebe6dc;--smoke:#9a968e;--red:#d6262e;--red2:#ff3b43}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ink);color:var(--bone);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:16px;-webkit-font-smoothing:antialiased}
+
+/* ===== Reskin del editor Decap CMS con la marca de Bryan la Tinta ===== */
+html,body{background:var(--ink) !important}
+#nc-root, [class*="AppMainContainer"]{background:var(--ink) !important;min-height:100vh}
+#nc-root, [class*="AppMainContainer"], [class*="EditorContainer"], [class*="CollectionMain"]{color:var(--bone) !important;font-family:Barlow,"Helvetica Neue",Arial,sans-serif !important}
+#nc-root h1,#nc-root h2,#nc-root h3{font-family:Anton,Impact,"Arial Narrow",sans-serif !important;font-weight:400 !important;text-transform:uppercase;letter-spacing:.02em}
+
+/* Cabecera superior (Contenido / Medios / usuario) */
+[class*="AppHeader"]{background:var(--carbon) !important;border-bottom:1px solid var(--line) !important;box-shadow:none !important}
+[class*="AppHeaderNavLink"],[class*="AppHeaderButton"]{color:var(--smoke) !important;font-weight:600 !important;letter-spacing:.04em}
+[class*="AppHeaderNavLink"].header-link-active,[class*="AppHeaderButton"].header-link-active{color:var(--red2) !important}
+[class*="AppHeader"] svg{fill:var(--bone) !important;color:var(--bone) !important}
+
+/* Paneles/tarjetas blancas (sidebar de colecciones, listados, cabecera de colección) */
+[class*="-card-"],[class*="cardTop"],[class*="CollectionTopContainer"]{background:var(--carbon) !important;border:1px solid var(--line) !important;box-shadow:none !important;color:var(--bone) !important}
+[class*="SidebarHeading"]{color:var(--smoke) !important;font-family:Anton,Impact,sans-serif !important;text-transform:uppercase;letter-spacing:.04em}
+[class*="SidebarNavLink"]{color:var(--bone) !important;background:transparent !important;border-left:3px solid transparent !important}
+[class*="SidebarNavLink"].sidebar-active{color:var(--red2) !important;font-weight:600;background:rgba(255,59,67,.08) !important;border-left:3px solid var(--red2) !important}
+[class*="SidebarNavLink"]:hover{color:var(--red2) !important}
+
+/* Filas de entradas / tarjetas de listado */
+[class*="ListItem"],[class*="listControlItem"],[class*="EntryListing"],[class*="CardsGridContainer"] > *{background:var(--carbon) !important;border:1px solid var(--line) !important;color:var(--bone) !important}
+[class*="ListItem"]:hover{border-color:var(--red2) !important}
+
+/* Barra de herramientas del editor (Publicar, vista previa, etc.) */
+[class*="ToolbarContainer"]{background:var(--carbon) !important;border-bottom:1px solid var(--line) !important;box-shadow:none !important}
+[class*="ToolbarContainer"] *{color:var(--bone)}
+[class*="PublishedButton"],[class*="ToolbarButton"]{background:transparent !important;color:var(--bone) !important;border:1px solid var(--line) !important}
+[class*="ToolbarButton"][class*="default-default"]:not([class*="Published"]){background:var(--red) !important;color:#fff !important;border:0 !important}
+[class*="RefreshPreviewButton"],[class*="ExpandButton"],[class*="EditorToggle"]{color:var(--smoke) !important}
+[class*="RefreshPreviewButton"]:hover,[class*="ExpandButton"]:hover,[class*="EditorToggle"]:hover{color:var(--red2) !important}
+[class*="AddButton"]{background:var(--red) !important;color:#fff !important;border:0 !important;border-radius:3px !important}
+[class*="AddButton"]:hover{background:var(--red2) !important}
+
+/* Panel de edición (fondo entre tarjetas) y vista previa */
+[class*="ControlPaneContainer"],[class*="PreviewPaneContainer"],[class*="EditorContainer"]{background:var(--ink) !important}
+
+/* Campos de formulario */
+#nc-root label{color:var(--smoke) !important;font-weight:600;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+#nc-root input[type="text"],#nc-root input[type="email"],#nc-root input[type="search"],#nc-root input[type="number"],#nc-root textarea,#nc-root select{background:var(--ink) !important;color:var(--bone) !important;border:1px solid var(--line) !important;border-radius:3px !important}
+#nc-root input:focus,#nc-root textarea:focus,#nc-root select:focus{outline:2px solid var(--red2) !important;outline-offset:1px}
+
+/* Widget de lista (fotos) */
+[class*="SortableListItem"]{background:var(--carbon) !important;border:1px solid var(--line) !important}
+[class*="ObjectWidgetTopBar"]{background:var(--carbon) !important;color:var(--bone) !important;border-bottom:1px solid var(--line) !important}
+[class*="FieldLabel"],[class*="TopBarContainer"],[class*="NestedObjectLabel"]{background:var(--carbon) !important;color:var(--bone) !important}
+[class*="TopBarContainer"] *,[class*="NestedObjectLabel"] *{color:var(--bone) !important}
+
+/* Biblioteca de medios (modal) */
+[class*="MediaLibrary"],[role="dialog"]{background:var(--carbon) !important;color:var(--bone) !important}
+[class*="MediaLibrary"] input{background:var(--ink) !important;color:var(--bone) !important;border:1px solid var(--line) !important}
+[class*="MediaLibrary"] button{border-radius:3px}
+</style>
+</head>
+<body>
+<script src="https://unpkg.com/decap-cms@3.1.3/dist/decap-cms.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex" />
+<title>Panel de gestión · Bryan la Tinta</title>
+<link rel="cms-config-url" href="config.yml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+:root{--ink:#0b0b0c;--carbon:#151517;--line:#2c2c30;--bone:#ebe6dc;--smoke:#9a968e;--red:#d6262e;--red2:#ff3b43}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:Barlow,"Helvetica Neue",Arial,sans-serif;font-size:16px;-webkit-font-smoothing:antialiased}
 h1{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px;font-size:30px;line-height:1}
 #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
 .card{width:100%;max-width:420px;background:var(--carbon);border:1px solid var(--line);border-radius:6px;padding:36px 32px}
