@@ -112,6 +112,7 @@ footer a{color:var(--smoke)}
 .reveal-child{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
 .reveal-child.is-visible{opacity:1;transform:none}
 }
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Bryan la Tinta","description":"Taller de pintura kustom, aerografía, pintura de prototipos y reparación de carbono para motos, bicis y cascos.","telephone":"+34651027177","email":"espinosa_bryan@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"C/ Pare Fita 72, local","postalCode":"08203","addressLocality":"Sabadell","addressRegion":"Barcelona","addressCountry":"ES"},"url":"https://www.bryanlatinta.com/","sameAs":["https://www.instagram.com/bryan_la_tinta/"],"openingHours":["Mo-Fr 08:00-20:30","Sa 08:00-16:30"],"hasMap":"https://maps.google.com/?cid=964268582447954132"}</script>
 </head><body>
@@ -189,6 +190,7 @@ footer a{color:var(--smoke)}
 <h2>¿Qué quieres pintar?</h2>
 <p class="muted">Rellena esto y te contestamos con una propuesta y un precio orientativo.</p>
 <form id="f-idea">
+<div class="hp" aria-hidden="true"><label>Web<input name="hp_extra" tabindex="-1" autocomplete="off"></label></div><input type="hidden" name="_t">
 <div class="row">
 <label>Tu nombre<input id="i-nombre" name="nombre" autocomplete="name" required></label>
 <label>Teléfono<input id="i-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +()-]{9,}" required></label>
@@ -207,6 +209,7 @@ footer a{color:var(--smoke)}
 <h2>Mándanos una foto de tu pieza</h2>
 <p class="muted">Prototipos, piezas de carbono o cualquier objeto raro: con una foto ya te podemos decir si se puede hacer y cómo.</p>
 <form id="f-proto">
+<div class="hp" aria-hidden="true"><label>Web<input name="hp_extra" tabindex="-1" autocomplete="off"></label></div><input type="hidden" name="_t">
 <div class="row">
 <label>Tu nombre<input id="p-nombre" name="nombre" autocomplete="name" required></label>
 <label>Teléfono<input id="p-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 +()-]{9,}" required></label>
@@ -341,8 +344,23 @@ document.querySelectorAll('.reveal, .reveal-child').forEach(revealObserve);
       fotos=result;result.forEach(function(f){var img=document.createElement('img');img.src=f.data;img.alt='Vista previa de '+f.name;prev.appendChild(img);});
     }).catch(function(e){if(version!==photoVersion)return;photoError=e.message;inp.setCustomValidity(photoError);errorFor(form,photoError);});
   });
+  var T0=Date.now();
+  document.querySelectorAll('input[name=_t]').forEach(function(i){i.value=String(T0);});
+  function pareceSpam(form){
+    var fd=new FormData(form), g=function(k){return String(fd.get(k)||'').trim();};
+    if(g('hp_extra'))return true;
+    if(Date.now()-T0<3000)return true;
+    var digitos=g('telefono').replace(/\D/g,'');
+    if(digitos.length<9||digitos.length>15)return true;
+    var raro=function(t){return t.length>=8&&!/\s/.test(t)&&(/[bcdfghjklmnpqrstvwxyz]{5,}/i.test(t)||/[a-z][A-Z][a-z][A-Z]/.test(t));};
+    if(raro(g('nombre'))||raro(g('mensaje')))return true;
+    if(/https?:\/\/|www\./i.test(g('nombre')))return true;
+    if((g('mensaje').match(/https?:\/\//gi)||[]).length>1)return true;
+    return false;
+  }
   async function enviar(form,okId){
     if(form.dataset.sending==='true'||!form.reportValidity())return;
+    if(pareceSpam(form)){form.reset();document.getElementById(okId).style.display='block';return;}
     form.dataset.sending='true';
     var button=form.querySelector('button[type=submit]'), label=button.textContent;
     var ok=document.getElementById(okId), controller=new AbortController(), timer;
@@ -360,7 +378,7 @@ document.querySelectorAll('.reveal, .reveal-child').forEach(revealObserve);
       if(!response.ok)throw new Error('No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.');
       var result=await response.json();
       if(!result||result.ok!==true)throw new Error('No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.');
-      form.reset();ok.style.display='block';
+      form.reset();form.querySelector('input[name=_t]').value=String(T0);ok.style.display='block';
       if(form.id==='f-proto'){photoVersion++;fotos=[];prev.textContent='';photoError='';inp.setCustomValidity('');}
     }catch(e){
       errorFor(form,e instanceof SyntaxError||e.name==='AbortError'||e instanceof TypeError?'No hemos podido confirmar el envío. Conservamos tus datos; consulta por WhatsApp antes de repetirlo.':e.message);
